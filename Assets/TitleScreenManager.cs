@@ -8,5 +8,9 @@ namespace Kf {
         public void StartNetworkAsHost() {
             NetworkManager.Singleton.StartHost();
         }
+
+        public void StartNewGame() { 
+            StartCoroutine(WorldSaveGameManager.instance.LoadNewGame());
+        }
     }
 }
