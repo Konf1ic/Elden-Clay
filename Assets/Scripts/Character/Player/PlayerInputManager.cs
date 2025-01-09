@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,9 @@ namespace Kf {
         PlayerControls playerControls;
 
         [SerializeField] Vector2 movementInput;
+        public float horizontalInput;
+        public float verticalInput;
+        public float moveAmount;
 
         private void Awake() {
             if (instance == null) {
@@ -55,6 +59,36 @@ namespace Kf {
         private void OnDestroy() {
             // IF WE DESTROY THIS OBJ, UNSUB FROM THIS EVENT (TO STOP MEMORY LEAK)
             SceneManager.activeSceneChanged -= OnSceneChange;
+        }
+
+        // IF WE MINIMIZE OR LOWER THE WINDOW, STOP AJUST INPUTS
+        private void OnApplicationFocus(bool focus) {
+            if (enabled) {
+                if (focus) {
+                    playerControls.Enable();
+                } else { 
+                    playerControls.Disable();
+                }
+            }
+        }
+
+        private void Update() {
+            HandleMovementInput();
+        }
+
+        private void HandleMovementInput() { 
+            verticalInput = movementInput.y;
+            horizontalInput = movementInput.x;
+
+            // RETURN ABSOLUTE NUMBER (mean is numbers without negative sign, so always positive)
+            moveAmount = Mathf.Clamp01(Mathf.Abs(verticalInput) + Mathf.Abs(horizontalInput));
+
+            // CLAPM THE VALUES, SO THEY ARE 0, 0.5, 1
+            if (moveAmount <= 0.5 && moveAmount > 0) {
+                moveAmount = 0.5f;
+            } else if(moveAmount > 0.5 && moveAmount <= 1){
+                moveAmount = 1;
+            }
         }
     }
 }

@@ -15,6 +15,10 @@ namespace Kf {
         protected override void Update() {
             base.Update();
 
+            // IF WE DONT OWN THIS GAME OBJ, WE DONT CONTROL OR EDIT IT
+            if(!IsOwner)
+                return;
+
             // HANDLE MOVEMENT
             PlayerLocomotionManager.HandleAllMovement();
         }
