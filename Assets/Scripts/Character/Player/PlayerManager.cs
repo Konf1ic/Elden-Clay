@@ -22,5 +22,22 @@ namespace Kf {
             // HANDLE MOVEMENT
             PlayerLocomotionManager.HandleAllMovement();
         }
+
+        protected override void LateUdate() {
+            if(!IsOwner)
+                return;
+            base.LateUdate();
+
+            PlayerCamera.instance.HandleAllCameraAction();
+        }
+
+        public override void OnNetworkSpawn() {
+            base.OnNetworkSpawn();
+
+            //  IF THIS IS THE PLAYER OBJ OWN BY THIS CLIENT
+            if (IsOwner) {
+                PlayerCamera.instance.player = this;
+            }
+        }
     }
 }

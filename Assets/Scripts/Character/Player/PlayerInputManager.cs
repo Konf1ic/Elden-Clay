@@ -13,10 +13,16 @@ namespace Kf {
 
         PlayerControls playerControls;
 
+        [Header("PLAYER MOVEMENT INPUT")]
         [SerializeField] Vector2 movementInput;
         public float horizontalInput;
         public float verticalInput;
         public float moveAmount;
+
+        [Header("CAMERA MOVEMENT INPUT")]
+        [SerializeField] Vector2 cameraInput;
+        public float cameraHorizontalInput;
+        public float cameraVerticalInput;
 
         private void Awake() {
             if (instance == null) {
@@ -50,7 +56,8 @@ namespace Kf {
             if (playerControls == null) { 
                 playerControls = new PlayerControls();
 
-                playerControls.PlayerMovement.Movenent.performed += i => movementInput = i.ReadValue<Vector2>();
+                playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+                playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
             }
 
             playerControls.Enable();
@@ -73,10 +80,11 @@ namespace Kf {
         }
 
         private void Update() {
-            HandleMovementInput();
+            HandlePlayerMovementInput();
+            HandleCameraMovementInput();
         }
 
-        private void HandleMovementInput() { 
+        private void HandlePlayerMovementInput() { 
             verticalInput = movementInput.y;
             horizontalInput = movementInput.x;
 
@@ -89,6 +97,11 @@ namespace Kf {
             } else if(moveAmount > 0.5 && moveAmount <= 1){
                 moveAmount = 1;
             }
+        }
+
+        private void HandleCameraMovementInput() {
+            cameraHorizontalInput = cameraInput.x;
+            cameraVerticalInput = cameraInput.y;
         }
     }
 }

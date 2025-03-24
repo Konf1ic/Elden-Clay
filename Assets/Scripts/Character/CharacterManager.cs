@@ -38,5 +38,9 @@ namespace Kf {
                     characterNetworkManager.networkRotationSmoothTime);
             }
         }
+
+        protected virtual void LateUdate() { 
+            
+        }
     }
 }

@@ -1289,16 +1289,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54395b8652b97fd4bb2fca863f8c95de, type: 3}
---- !u!1001 &2614114680000384841
+--- !u!1001 &3346888870549984454
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2614114680928969277, guid: d81313df43bc40e43931aa2ad666cd84, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 3846720210043960804, guid: d81313df43bc40e43931aa2ad666cd84, type: 3}
       propertyPath: m_Name
-      value: Player Camera
+      value: Player Camera (Left & Right)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097211908801542348, guid: d81313df43bc40e43931aa2ad666cd84, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8119658612397690190, guid: d81313df43bc40e43931aa2ad666cd84, type: 3}
       propertyPath: m_RootOrder
