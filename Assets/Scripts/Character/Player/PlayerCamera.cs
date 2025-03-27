@@ -17,10 +17,10 @@ namespace Kf {
         [SerializeField] float upAndDownLookSpeed = 220;
         [SerializeField] float minimumPivot = -30;  //  THE LOWEST POINT THE CAMERA CAN LOOK DOWN
         [SerializeField] float maximumPivot = 60;   //  THE HIGHEST POINT THE CAMERA CAN LOOK UP
-        [SerializeField] float cameraCollisionRadius = 0.2F;
+        [SerializeField] float cameraCollisionRadious = 0.2F;
         [SerializeField] LayerMask collideWithLayers;
 
-        [Header("Camera Valuess")]
+        [Header("Camera Values")]
         private Vector3 cameraVerlocity;
         private Vector3 cameraObjectPosition;   //  USE FOR CAMERA COLLISION (MOVE THE CAMERA TO THIS POSITION UPON COLLIDING)
         [SerializeField] float leftAndRightLookAngle;
@@ -49,8 +49,8 @@ namespace Kf {
         }
 
         public void HandleFollowTarget() {
-            Vector3 targetcameraPosition = Vector3.SmoothDamp(transform.position, player.transform.position, ref cameraVerlocity, cameraSmoothSpeed * Time.deltaTime);
-            transform.position = targetcameraPosition;
+            Vector3 targetCameraPosition = Vector3.SmoothDamp(transform.position, player.transform.position, ref cameraVerlocity, cameraSmoothSpeed * Time.deltaTime);
+            transform.position = targetCameraPosition;
         }
 
         public void HandleRotation() {
@@ -85,20 +85,20 @@ namespace Kf {
 
             RaycastHit hit;
             //  DIRECTION FOR COLLISION CHECK
-            Vector3 direction = cameraPrivotTransform.position - cameraObject.transform.position;
+            Vector3 direction = cameraObject.transform.position - cameraPrivotTransform.position;
             direction.Normalize();
 
             //  WE CHECK IF THE CAMERA IS IN FRONT OF OUR WANTED DIRICTION ^ (ABOVE)
-            if (Physics.SphereCast(cameraPrivotTransform.position, cameraCollisionRadius, direction, out hit, Mathf.Abs(targetCameraZPosition), 0)){
+            if (Physics.SphereCast(cameraPrivotTransform.position, cameraCollisionRadious, direction, out hit, Mathf.Abs(targetCameraZPosition), collideWithLayers)){
                 //  IF THERE IS, WE CHECK OUR DISTANCE FROM IT
                 float distanceFromHitObject = Vector3.Distance(cameraPrivotTransform.position, hit.point);
                 //  WE THEN EQUATE OUR TARGET Z POSITION TO THE FOLLOWING
-                targetCameraZPosition = -(distanceFromHitObject - cameraCollisionRadius);
+                targetCameraZPosition = -(distanceFromHitObject - cameraCollisionRadious);
             }
 
             //  IF OUR TARGET POSITION IS LESS THAN OUR COLLISION RADIUS, WE SUPTRACT COLLISION RADIUS (MAKE IS SNAP BACK)
-            if ( Mathf.Abs(targetCameraZPosition) < cameraCollisionRadius) {
-                targetCameraZPosition = -cameraCollisionRadius;
+            if ( Mathf.Abs(targetCameraZPosition) < cameraCollisionRadious) {
+                targetCameraZPosition = -cameraCollisionRadious;
             }
 
             //  WE THEN APPLY OUR FINAL POSITION USING A LERP OVER A TIME OF 0.2F

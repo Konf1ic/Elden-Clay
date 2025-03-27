@@ -100,8 +100,8 @@ namespace Kf {
         }
 
         private void HandleCameraMovementInput() {
-            cameraHorizontalInput = cameraInput.x;
             cameraVerticalInput = cameraInput.y;
+            cameraHorizontalInput = cameraInput.x;
         }
     }
 }

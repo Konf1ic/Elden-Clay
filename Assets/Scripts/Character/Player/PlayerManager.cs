@@ -23,10 +23,11 @@ namespace Kf {
             PlayerLocomotionManager.HandleAllMovement();
         }
 
-        protected override void LateUdate() {
-            if(!IsOwner)
+        protected override void LateUpdate() {
+            if (!IsOwner)
                 return;
-            base.LateUdate();
+
+            base.LateUpdate();
 
             PlayerCamera.instance.HandleAllCameraAction();
         }

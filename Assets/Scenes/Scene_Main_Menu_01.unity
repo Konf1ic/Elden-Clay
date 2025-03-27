@@ -812,6 +812,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215128688}
   m_CullTransparentMesh: 1
+--- !u!4 &1381965139 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5097211908801542348, guid: d81313df43bc40e43931aa2ad666cd84, type: 3}
+  m_PrefabInstance: {fileID: 3346888870549984454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1461249254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,6 +1301,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1174760041, guid: d81313df43bc40e43931aa2ad666cd84, type: 3}
+      propertyPath: cameraPrivotTransform
+      value: 
+      objectReference: {fileID: 1381965139}
+    - target: {fileID: 1174760041, guid: d81313df43bc40e43931aa2ad666cd84, type: 3}
+      propertyPath: collideWithLayers.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2614114680928969277, guid: d81313df43bc40e43931aa2ad666cd84, type: 3}
       propertyPath: m_LocalPosition.z
       value: -3
@@ -1306,7 +1319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5097211908801542348, guid: d81313df43bc40e43931aa2ad666cd84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8119658612397690190, guid: d81313df43bc40e43931aa2ad666cd84, type: 3}
       propertyPath: m_RootOrder
