@@ -39,7 +39,7 @@ namespace Kf {
             }
         }
 
-        protected virtual void LateUdate() { 
+        protected virtual void LateUpdate() { 
             
         }
     }
